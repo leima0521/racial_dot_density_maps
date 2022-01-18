@@ -1,5 +1,5 @@
 # Racial dot density map
-## Lei Ma 
+#### Lei Ma 
 
 I produce racial dot maps at the census tract level to visualize the segregation/integration pattern of different racial/ethnic groups. It uses the Decennial Census data in 2000, 2010, and 2020. I focus on four racial/ethnic groups, on-Hispanic White, non-Hispanic Black, non-Hispanic Asian, and Hispanic/Latin. The code can be modified to add other groups and other years. Please feel free to contact me (leim@bu.edu) if you have any feedback.
 
