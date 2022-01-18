@@ -3,7 +3,7 @@
 
 I produce racial dot maps at the census tract level to visualize the segregation/integration pattern of different racial/ethnic groups. It uses the Decennial Census data in 2000, 2010, and 2020. I focus on four racial/ethnic groups, on-Hispanic White, non-Hispanic Black, non-Hispanic Asian, and Hispanic/Latin. The code can be modified to add other groups and other years. Please feel free to contact me (leim@bu.edu) if you have any feedback.
 
-The [Univeristy of Virginia](http://racialdotmap.demographics.coopercenter.org) used to produce racial dot maps using the 2010 Census, but they are no longer available. The [CNN](https://www.cnn.com/interactive/2021/us/census-race-ethnicity-map/) also publishes interactive racial dot maps using the 2020 Census. My code can be used to replicate these racial dot maps.
+The [Univeristy of Virginia](http://racialdotmap.demographics.coopercenter.org) used to produce racial dot maps using the 2010 Census, but they are no longer available. [CNN](https://www.cnn.com/interactive/2021/us/census-race-ethnicity-map/) also publishes interactive racial dot maps using the 2020 Census. My code can be used to replicate these racial dot maps.
 
 ## Example maps
 
