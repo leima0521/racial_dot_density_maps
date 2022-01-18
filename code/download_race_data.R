@@ -67,6 +67,7 @@ download_race_data <- function(geo_level = "tract", state, county, year) {
 ## Example ----
 
 ## select the 10 largest CBSAs
+## crosswalk from NBER https://data.nber.org/data/cbsa-fips-county-crosswalk.html
 cbsa2fipsxw <- read_csv(paste0(datapath, "cbsa2fipsxw.csv"))
 cbsa2fipsxw <- cbsa2fipsxw %>% filter(!is.na(cbsacode))
 largest_cbsa <- cbsa2fipsxw %>%

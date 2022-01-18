@@ -1,12 +1,11 @@
 # Racial dot density map
-### Lei Ma 
-### January, 2022
+## Lei Ma 
 
-I produce racial dot maps at the census tract level to visualize the segregation/integration pattern of different racial/ethnic groups. I use the Decennial Census data in 2000, 2010, and 2020. I focus on four racial/ethnic groups, on-Hispanic White, non-Hispanic Black, non-Hispanic Asian, and Hispanic/Latin. The code can be modified to add other groups and other years. Please feel free to contact me (leim@bu.edu) if you have any feedback.
+I produce racial dot maps at the census tract level to visualize the segregation/integration pattern of different racial/ethnic groups. It uses the Decennial Census data in 2000, 2010, and 2020. I focus on four racial/ethnic groups, on-Hispanic White, non-Hispanic Black, non-Hispanic Asian, and Hispanic/Latin. The code can be modified to add other groups and other years. Please feel free to contact me (leim@bu.edu) if you have any feedback.
 
-The [Univeristy of Virginia](http://racialdotmap.demographics.coopercenter.org) used to produce racial dot maps using the 2010 Census, but they are no longer available. The [CNN](https://www.cnn.com/interactive/2021/us/census-race-ethnicity-map/) also publishes interactive racial dot maps using the 2020 Census. My code can be used to replicate these racial dot maps. They can also be modified easily to produce different maps.
+The [Univeristy of Virginia](http://racialdotmap.demographics.coopercenter.org) used to produce racial dot maps using the 2010 Census, but they are no longer available. The [CNN](https://www.cnn.com/interactive/2021/us/census-race-ethnicity-map/) also publishes interactive racial dot maps using the 2020 Census. My code can be used to replicate these racial dot maps.
 
-### Example maps
+## Example maps
 
 ![alt text](https://github.com/leima0521/racial_dot_density_maps/blob/8345805e348f8232561836461f4f4bbee1e757b3/out/Chicago-Naperville-Elgin,%20IL-IN-WI-2000.png)
 
@@ -14,11 +13,11 @@ The [Univeristy of Virginia](http://racialdotmap.demographics.coopercenter.org) 
 
 ![alt text](https://github.com/leima0521/racial_dot_density_maps/blob/8345805e348f8232561836461f4f4bbee1e757b3/out/Chicago-Naperville-Elgin,%20IL-IN-WI-2020.png)
 
-### Code
+## Code
 
-#### 1. Download data
+### Download data
 
-[download_race_data.R]() downloads the Census data. It requires the [`tidycensus`](https://walker-data.com/tidycensus/) package to call for Census APIs to download the data. You need to get a Census API for your own machine. I also use packages `tidyverse` and `tidyr` to clean the data.
+[download_race_data.R](code/download_race_data.R) downloads the Census data. It requires the [`tidycensus`](https://walker-data.com/tidycensus/) package to call for Census APIs to download the data. You need to get a Census API for your own machine. I also use packages `tidyverse` and `tidyr` to clean the data.
 
 The function `download_race_data` downloads data using the Census API. I focus on four racial/ethnic groups: non-Hispanic White, non-Hispanic Black, non-Hispanic Asian, and Hispanic/Latino. You can modify `variable <- c(...)` if you want to add other racial/ethnic groups, such as Hawaiian/Pacific Islander. You can also use the `get_acs()` function if you want to download the American Community Survey data in other years.
 
@@ -77,15 +76,15 @@ download_race_data <- function(geo_level = "tract", state, county, year) {
     )
 ```
 
-#### 2. Make dot maps
+### Make dot maps
 
-[make_maps.R] produces dot maps. Each dot represents a unique racial/ethnic group and captures 150 people by default. It requires the [`tmap`](https://github.com/r-tmap/tmap) package to produce the maps. 
+[make_maps.R](code/make_maps.R) produces dot maps. Each dot represents a unique racial/ethnic group and captures 150 people by default. It requires the [`tmap`](https://github.com/r-tmap/tmap) package to produce the maps. 
 
 The `make_dot_density_map` function produces the map by specifying the CBSA, year, and the population size of each dot. The main part of the code is written in [Kyle Walker's book Analayzing US Census Data](https://walker-data.com/census-r/mapping-census-data-with-r.html).
 
 For example, if you want to produce a racial dot example for Chicago in 2010, run `make_dot_density_map("Chicago-Naperville-Elgin, IL-IN-WI", 2010)`. The default size of each dot is 150. If you want to change the dot value, simply use other values for `dotsize = xxx`. Note that it takes a while to produce these maps (your machine is not broken). My code also provides an example of how to use `pmap` to produce multiple maps. 
 
-You can change aesthetics by changing values in the function. For example, you can change the color palette using a different `col = brewer.pal(xxx)`. You can also add major roads, rivers, lakes, and other layers to the map using `tmap`.
+You can change aesthetics by changing values in the function. For example, you can change the color palette using a different `col = brewer.pal(xxx)`. You can also add major roads, rivers, lakes, and other layers to the map using `tmap`. If you want to produce interactive maps, check out the [`Leaflet`](https://rstudio.github.io/leaflet/) package and [Kyle Walker's book chapter](https://rstudio.github.io/leaflet/). 
 
 ```
 make_dot_density_map <- function(cbsa, t, dotsize = 150, transparency = 0.7) {
