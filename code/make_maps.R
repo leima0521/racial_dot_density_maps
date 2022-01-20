@@ -10,7 +10,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 datapath <- "../data/"
 
 ## load data ----
-race_tract_df <- readRDS(paste0(datapath_inter, "race_tract_decennial_census.Rds"))
+race_tract_df <- readRDS(paste0(datapath, "race_tract_decennial_census.Rds"))
 race_tract_df <- race_tract_df %>%
   rename(variable = race, value = pop) %>%
   select(-tot_pop, -pop_share)
